@@ -1,0 +1,8 @@
+#!/bin/sh
+#on_off=$( xset s q | awk '/prefer/ {print $3}' )
+
+if [ $(xset s q | awk '/prefer/ {print $3}') = 'no' ]; then
+	xset s blank
+else 
+  xset s noblank
+fi
