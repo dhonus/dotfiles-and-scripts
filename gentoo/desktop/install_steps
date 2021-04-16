@@ -1,0 +1,219 @@
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+mount /dev/sda2 /boot
+lsblk
+emerge-webrsync
+eselect news read
+eselect profile list
+ls
+emerge --asl --verbose --update --deep --newuse @world
+emerge --ask --verbose --update --deep --newuse @world
+emerge --info | grep ^USE
+emerge --info | grep ^USE >> /etc/portage/make.conf
+nano -w /etc/portage/make.conf 
+nano /etc/portage/package.license/kernel
+nano -w /etc/portage/package.license/kernel
+echo "Europe/Prague" > /etc/timezone
+ls /usr/share/zoneinfo/
+ls /usr/share/zoneinfo/Europe/
+emerge --config sys-libs/timezone-data
+nano -w /etc/portage/make.conf 
+nano -w /etc/portage/make.conf 
+y
+emerge --config sys-libs/timezone-data
+nano -w /etc/portage/make.conf 
+nano -w /etc/locale.gen 
+locale-gen
+eselect locale list
+nano -w /etc/locale.gen 
+locale-gen
+nano -w /etc/locale.gen 
+eselect locale list
+eselect locale set 4
+env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+emerge --ask sys-kernel/gentoo-sources
+emerge --ask sys-kernel/linux-firmware
+nano /etc/portage/package.license/kernel
+nano /etc/portage/package.license
+nano /etc/portage/package.license/kernel
+emerge --ask sys-kernel/linux-firmware
+mkdir /etc/portage/package.license
+nano -w /etc/portage/package.license/kernel
+emerge --ask sys-kernel/linux-firmware
+emerge --ask sys-apps/pciutils
+lspci -nnk | gre "Kernel driver in use:"
+lspci -nnk | grep "Kernel driver in use:"
+cd /usr/src/linux
+make menuconfig
+make && make modules_install
+make
+make modules_install
+make install
+ls
+emerge --ask sys-kernel/genkernel
+ls
+nano kernel/kernel.cols
+ls -a
+genkernel --install --kernel-config=.config initramfs
+lsblk
+nano -w /etc/fstab 
+nano -w /etc/conf.d/hostname 
+history | less
+eselect locale list
+eselect locale set 6
+env update && source /etc/profile && export PS1="(chroot) ${PS1}"
+env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+nano
+nano -w /etc/conf.d/net
+nano -w /etc/conf.d/net
+emerge --ask --noreplace net-misc/netifrc
+nano -w /etc/conf.d/net
+ifconfig
+echo "enp0s31f6" >> /etc/conf.d/net
+nano -w /etc/conf.d/net
+cd /etc/init.d
+ln-s net.lo net.enp0s31f6
+ln -s net.lo net.enp0s31f6
+rc-update add net.enp0s31f6 default
+nano -w /etc/hosts
+passwd
+nano -w /etc/conf.d/keymaps
+nano -w /etc/conf.d/hwclock 
+emerge --ask app-admin/sysklogd
+rc-update add sysklogd default
+emerge --ask sys-process/cornie
+emerge --ask sys-process/cronie
+rc-update add cronie default
+emerge --ask sys-apps/mlocate
+emerge --ask sys-fs/e2fsprogs
+emerge --ask sys-fs/dostools
+emerge --ask sys-fs/dosfstools
+emerge --ask net-misc/dhcpcd
+echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf 
+emerge --ask --verbose sys-boot/grub:2
+grub-install --target=x86_64-efi --efi-directory=/boot --removable
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
+ls
+emerge --ask neofetch
+neofetch
+emerge --ask neofetch --auto-unmask
+emerge --ask neofetch
+emerge --ask vim
+vim
+emerge --ask neofetch
+vim /etc/make.conf
+ls
+ls -a
+cd
+ls
+cd /
+ls
+vim /etc/portage/make.conf 
+emerge --ask neofetch
+emerge --ask www-client/w3m
+emerge --ask neofetch
+neofetch
+emerge --ask app-misc/neofetch
+vim /etc/portage/make.conf 
+emerge --ask app-misc/neofetch
+man emerge
+emerge --ask app-misc/neofetch
+emerge --ask www-client/w3m
+emerge --ask app-misc/neofetch
+emerge -pv neofetch
+USE="imlib* X" emerge neofetch
+USE="imlib* X" emerge neofetch --autounmask-write
+USE="*" emerge neofetch --autounmask-write
+USE="imlib* X" emerge www-client/w3m
+USE="*" emerge neofetch --autounmask-write
+USE="*" emerge neofetch --autounmask-write -5
+etc-update
+etc-update
+USE="*" emerge neofetch --autounmask-write
+neofetch
+emerge git
+git
+git | less
+emerge git | less 
+ls
+vim /etc/portage/make.conf 
+emerge --ask dev-vcs/git
+emerge --ask dev-libsPlibressl
+emerge --ask dev-libs/libressl
+vim /etc/portage/make.conf 
+emerge --ask dev-libs/libressl
+USE="asm test -static-libs" emerge --ask dev-libs/libressl
+USE="asm test static-libs" emerge --ask dev-libs/libressl
+emerge --ask dev-vcs/git
+vim /etc/portage/make.conf 
+emerge --ask dev-vcs/git
+emerge --ask sys-aut/polkit
+emerge --ask sys-auth/polkit
+USE="-elogind -systemd" emerge --ask sys-auth/polkit
+USE="elogind systemd" emerge --ask sys-auth/polkit
+USE="elogind systemd introspection nls pam systemd test examples gtk jit kde" emerge --ask sys-auth/polkit
+USE="elogind systemd introspection nls pam systemd test examples gtk jit kde selinux" emerge --ask sys-auth/polkit
+USE='elogind systemd introspection nls pam systemd test examples gtk jit kde (selinux)" ABIx86="(64)"' emerge --ask sys-auth/polkit
+USE='elogind systemd introspection nls pam systemd test examples gtk jit kde (.selinux)" ABIx86="(64)"' emerge --ask sys-auth/polkit
+USE='elogind systemd introspection nls pam systemd test examples gtk jit kde (-selinux) ABIx86="(64)"' emerge --ask sys-auth/polkit
+git
+USE="blksha1 cgi curl cvs doc emacs gnome-keyring gpg highlight iconv libressl mediawiki mediawiki.experimental nls pcre pcre-jit perforce perl ppcsha1 subversion test threads tk webdav xinetd" --ask d
+git
+USE="blksha1 cgi curl cvs doc emacs gnome-keyring gpg highlight iconv libressl mediawiki mediawiki.experimental nls pcre pcre-jit perforce perl ppcsha1 subversion test threads tk webdav xinetd" emerge 
+ev-vsc/git
+USE="blksha1 cgi curl cvs doc emacs gnome-keyring gpg highlight iconv libressl mediawiki mediawiki.experimental nls pcre pcre-jit perforce perl ppcsha1 subversion test threads tk webdav xinetd" emerge 
+ev-vcs/git
+etc-update
+USE="blksha1 cgi curl cvs doc emacs gnome-keyring gpg highlight iconv libressl mediawiki mediawiki.experimental nls pcre pcre-jit perforce perl ppcsha1 subversion test threads tk webdav xinetd" emerge 
+ev-vcs/git
+emerge sys-auth/polkit
+USE="elogind systemd" emerge sys-auth/polkit 
+etc-update
+etc-update
+etc-update
+USE="elogind systemd" emerge sys-auth/polkit 
+vim /etc/portage/package.license/
+emerge --ask dev-vcs/git
+vim /etc/portage/make.conf 
+vim /etc/portage/make.conf 
+emerge --ask dev-vcs/git
+emerge --ask dev-vcs/git --autounmask
+ping danielhonus.com
+USE="elogind" emerge --ask dev-vcs/git
+USE="elogind" emerge --ask dev-vcs/git --autounmask
+etc-update
+USE="elogind" emerge --ask dev-vcs/git --autounmask
+USE="*" emerge --ask dev-vcs/git --autounmask
+USE="* elogind" emerge --ask dev-vcs/git --autounmask
+neofetch
+eselect profile show
+vim /etc/portage/make.conf 
+ls
+emerge --ask dev-vcs/git
+git
+vim /etc/portage/make.conf 
+git clone https://github.com/HonusDaniel/dwm
+useradd -m -G users,wheel,audio,usb,video,portage,games -s /bin/bash daniel
+useradd -m -G users,wheel,audio,usb,video,portage -s /bin/bash daniel
+passwd
+passwd daniel
+emerge --ask sudo
+etc-update
+vim /etc/sudoers
+neofetch
+xrandr
+xrandr 1920x1080
+startx
+emerge --ask twm xclock xterm 
+startx
+exec dwm
+dwm
+poweroff
+ůs
+ls
+cd
+ls
+ls
+history
+
