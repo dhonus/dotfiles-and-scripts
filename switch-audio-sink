@@ -1,0 +1,15 @@
+#!/bin/bash
+
+declare sinks=`pacmd list-sinks|sed -n -e 's/.*device.description[[:space:]]=[[:space:]]"\(.*\)"/\1/p'`
+declare index=`pacmd list-sinks|sed -n -e 's/.*[[:space:]]index:[[:space:]]\([[:digit:]]\)/\1/p'`
+
+choices=$(paste -d'@' <(echo "$sinks") <(echo "$index"))
+chosen=$(echo "$choices"|dmenu -i -p "Available Sinks")
+index=$(echo $chosen|sed -n -e 's/.*\([0-9]\)$/\1/p')
+
+pacmd "set-default-sink ${index}"
+for app in $(pacmd list-sink-inputs|sed -n -e 's/index:[[:space:]]\([[:digit:]]\)/\1/p');
+do
+  pacmd "move-sink-input $app $index"
+done
+
