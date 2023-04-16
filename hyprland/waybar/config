@@ -1,0 +1,122 @@
+{
+	"layer": "top",
+	"modules-left": ["cpu","memory","network","custom/media","tray", "custom/music"],
+	"modules-center": ["wlr/workspaces"],
+	"modules-right": ["custom/updates","custom/wallpaper","backlight","pulseaudio", "clock", "battery","custom/power"],
+	
+	"pulseaudio": {
+		"tooltip": false,
+        "states": {
+            "ok": 0,
+            "loud": 90
+        },
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+        "format-muted": " Muted",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+   },
+    "river/tags": {
+		"num-tags": 6
+    },
+	"network": {
+		"tooltip": false,
+		"format-wifi": "  {essid}",
+		"format-ethernet": "",
+        "format": "No internet",
+        "on-click": "st -e nmtui"
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}% {time}",
+        "format-charging": " {capacity}% {time}",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "format-time": "{H}:{M}"
+    },
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+	},
+    "clock": {
+        "interval": 1,
+        "format": "{: %I:%M:%S %p   %d/%m/%Y %a}"
+    },
+    "cpu": {
+        "interval": 15,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}% RAM",
+        "max-length": 10
+    },
+    "custom/media": {
+        "interval": 30,
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 30,
+        "format-icons": {
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause"
+    },
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "rofi -show drun",
+        "on-click-right": "killall rofi"
+    },
+    "custom/power":{
+        "format": " ",
+        "on-click": "hyprctl dispatch exit"
+    },
+    "custom/music": {
+        "format": "{icon} {}",
+        "max-length": 30,
+        "format-icons": {
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "exec": " bash /home/daniel/music-status-bash/current_song | head",
+        "interval": 15
+    },
+    "custom/updates":{
+        "format": "{} Update(s)",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 1500
+    },
+    "custom/wallpaper":{
+        "format":" ",
+        "on-click": "grim && notify-send 'Screenshot taken'"
+    },
+    "custom/lock": {
+        "format": " Lock",
+        "on-click": "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.7 --ring-color ffffff --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 0 --fade-in 0.3"
+    }
+}
+
